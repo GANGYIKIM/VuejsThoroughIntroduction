@@ -39,7 +39,7 @@ describe('KbnButton', () => {
 
     describe('disabled', () => {
       describe('기본값', () => {
-        it('disabled 송성이 부여되지 않음', () => {
+        it('disabled 속성이 부여되지 않음', () => {
           const button = mount(KbnButton)
           expect(button.attributes().disabled).to.be.an('undefined')
         })
@@ -88,7 +88,7 @@ describe('KbnButton', () => {
     })
 
     describe('콘텐츠 없음', () => {
-      it('inserted slot', () => {
+      it('not inserted slot', () => {
         const button = mount(KbnButton)
         expect(button.text()).to.equal('')
       })
