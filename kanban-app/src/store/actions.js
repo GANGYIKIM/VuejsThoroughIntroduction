@@ -7,7 +7,7 @@ export default {
   login: ({commit}) => {
     // TODO:
     throw new Error('Login action should be implemented')
-  }, 
+  },
   fetchLists: ({commit}) => {
     // TODO:
     throw new Error('fetchLists action should be implemented')
