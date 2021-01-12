@@ -1,7 +1,7 @@
 <template>
   <div class="login-view">
     <h1>KANBAN APP</h1>
-    <KbnLoginForm :onLogin="handleLogin" />
+    <KbnLoginForm :onlogin="handleLogin" />
   </div>
 </template>
 
@@ -14,14 +14,14 @@ export default {
     KbnLoginForm
   },
   methods: {
-    handleLogin(authInfo) {
+    handleLogin (authInfo) {
       return this.$store.dispatch('login', authInfo)
         .then(() => {
           this.$router.push({ path: '/' })
         })
         .catch(err => this.throwReject(err))
     },
-    throwReject(err) {return Promise.reject(err)}
+    throwReject (err) { return Promise.reject(err) }
   }
 }
 </script>

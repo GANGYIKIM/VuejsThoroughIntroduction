@@ -62,7 +62,7 @@ export default {
       required: true
     }
   },
-  data(){
+  data () {
     return {
       email: '',
       password: '',
@@ -71,7 +71,7 @@ export default {
     }
   },
   computed: {
-    validation(){
+    validation () {
       return {
         email: {
           required: required(this.email),
@@ -82,30 +82,29 @@ export default {
         }
       }
     },
-    valid(){
+    valid () {
       const validation = this.validation
       const fields = Object.keys(validation)
       let valid = true
-      for(let i = 0; i < fields.length; i++) {
+      for (let i = 0; i < fields.length; i++) {
         const field = fields[i]
         valid = Object.keys(validation[field]).every(key => validation[field][key])
-        if(!valid) {
+        if (!valid) {
           break
         }
       }
       return valid
     },
-    disableLoginAction() {
+    disableLoginAction () {
       return !this.valid || this.progress
     }
   },
   methods: {
-    resetError() {
+    resetError () {
       this.error = ''
     },
-    handleClick(event) {
-      if(this.disableLoginAction) return 
-      
+    handleClick (event) {
+      if (this.disableLoginAction) return
       this.progress = true // 로그인 처리 중임을 나타내는 플래그
       this.error = ''
 
@@ -114,12 +113,12 @@ export default {
           email: this.email,
           password: this.password
         })
-        .catch(err => {
-          this.error = err.message
-        })
-        .then(() => {
-          this.progress = false
-        })
+          .catch(err => {
+            this.error = err.message
+          })
+          .then(() => {
+            this.progress = false
+          })
       })
     }
   }
