@@ -48,7 +48,7 @@
 <script>
 import kbnButton from '@/components/atoms/KbnButton'
 // 이메일 주소 형식 정규표현식
-const REGEX_EMAIL = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const REGEX_EMAIL = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const required = val => !val.trim()
 
 export default {
@@ -57,7 +57,7 @@ export default {
     kbnButton
   },
   props: {
-    onLogin: {
+    onlogin: {
       type: Function,
       required: true
     }
@@ -109,7 +109,7 @@ export default {
       this.error = ''
 
       this.$nextTick(() => {
-        this.onLogin({
+        this.onlogin({
           email: this.email,
           password: this.password
         })

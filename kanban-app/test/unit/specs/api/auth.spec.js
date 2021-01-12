@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { config } from 'vue/types/umd'
 
 // Auth API 모듈을 사용하는 HTTP 클라이언트 목업 생성
 const mockAuth = adapter => {
@@ -18,17 +17,17 @@ describe('Auth API 모듈', () => {
     const password = '12345678'
 
     describe('성공', () => {
-      it ('token, userId를 받아옴', done => {
+      it('token, userId를 받아옴', done => {
         const adapter = config => {
-          return new Promise(( resolve, reject ) => {
+          return new Promise((resolve, reject) => {
             resolve({ data: { token, userId }, status: 200 })
           })
         }
         const auth = mockAuth(adapter)
         auth.login({
-            address,
-            password
-          })
+          address,
+          password
+        })
           .then(res => {
             expect(res.token).to.equal(token)
             expect(res.userId).to.equal(userId)
@@ -38,7 +37,7 @@ describe('Auth API 모듈', () => {
     })
 
     describe('오류', () => {
-      it ('오류 메세지를 받아옴', done => {
+      it('오류 메세지를 받아옴', done => {
         const message = 'failed login'
         const adapter = config => {
           return new Promise((resolve, reject) => {
@@ -49,7 +48,7 @@ describe('Auth API 모듈', () => {
         }
 
         const auth = mockAuth(adapter)
-        auth.login({ address, password})
+        auth.login({ address, password })
           .catch(err => {
             expect(err.message).to.equal(message)
           })

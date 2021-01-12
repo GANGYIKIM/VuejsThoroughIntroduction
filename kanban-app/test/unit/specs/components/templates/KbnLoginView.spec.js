@@ -2,7 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import KbnLoginView from '@/components/templates/KbnLoginView.vue'
 
-const localVue = createLocalVue();
+const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
@@ -15,20 +15,20 @@ describe('KbnLoginView', () => {
   // 'KbnLoginForm' 컴포넌트의 로그인 버튼 클릭을 일으키는 헬퍼 함수
   const triggerLogin = (loginView, target) => {
     const loginForm = loginView.find(target)
-    loginForm.vm.onLogin('foo@domain.com', '12345678')
+    loginForm.vm.onlogin('foo@domain.com', '12345678')
   }
 
   beforeEach(() => {
     // KbnLoginForm 컴포넌트 스텁 설정
     LoginFormComponentStub = {
       name: 'KbnLoginForm',
-      props: ['onLogin'],
+      props: ['onlogin'],
       render: h => h('p', ['login form'])
     }
 
     // vue router 목업 설정
     $router = {
-      push : sinon.spy()
+      push: sinon.spy()
     }
 
     // login 액션 동작 확인을 위한 Vuex 관련 설정
@@ -81,7 +81,7 @@ describe('KbnLoginView', () => {
           store,
           localVue
         })
-        sinon.spy(localView.vm, 'throwReject') // spy를 이용해 래핑
+        sinon.spy(localVue.vm, 'throwReject') // spy를 이용해 래핑
       })
       afterEach(() => {
         loginView.vm.throwReject.restore() // spy 래핑 해제

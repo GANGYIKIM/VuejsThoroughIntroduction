@@ -33,7 +33,7 @@ describe('login 액션', () => {
         token,
         userId
       })
-      const action = mockLoginAction(login) 
+      const action = mockLoginAction(login)
       commit = sinon.spy()
 
       future = action({
@@ -64,7 +64,7 @@ describe('login 액션', () => {
       Vue.nextTick(done)
     })
 
-    it ('실패', done => {
+    it('실패', done => {
       expect(commit.called).to.equal(false)
 
       future.catch(err => {
