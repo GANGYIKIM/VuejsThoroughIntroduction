@@ -2,7 +2,7 @@
   <button
     :class="classes"
     :disabled="disabled"
-    type="button"
+    :type="type"
     @click="handleClick"
   >
     <slot/>
